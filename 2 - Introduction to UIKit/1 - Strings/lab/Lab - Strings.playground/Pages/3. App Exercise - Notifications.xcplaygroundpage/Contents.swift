@@ -9,8 +9,8 @@
  */
 
 let firstName = "Justin"
-let lastName = " Snider"
-let fullName = firstName + lastName
+let lastName = "Snider"
+let fullName = firstName + " " + lastName
 print(fullName)
 /*:
  Occasionally users of your fitness tracking app will beat previous goals or records. You may want to notify them when this happens for encouragement purposes. Create a new constant `congratulations` and assign it a string literal that uses string interpolation to create the following string:
