@@ -36,8 +36,8 @@ if let jan = myDict.updateValue(31, forKey: "January") {
 let shapesArray = ["Circle", "Square", "Triangle"]
 let colorsArray = ["Red", "Green", "Blue"]
 let primaryDict: [String : [String]] = [
-    "Shapes" : [shapesArray[0], shapesArray[1], shapesArray[2]],
-    "Colors" : [colorsArray[0], colorsArray[1], shapesArray[2]]
+    "Shapes" : shapesArray,
+    "Colors" : colorsArray
 ]
 print(primaryDict)
 /*:
