@@ -8,6 +8,12 @@
 struct User {
     var name: String
     var stepsToday: Int
+    
+    init?(name: String?, stepsToday: Int?) {
+        guard let name = name, let stepsToday = stepsToday else {return nil}
+        self.name = name
+        self.stepsToday = stepsToday
+    }
 }
 
 let stepMaster = User(name: "StepMaster", stepsToday: 8394)
@@ -20,15 +26,11 @@ let competitors = [stepMaster, activeSitter, monsterWalker]
  
  At that point, the goal is to assign the user with the higher score to `topCompetitor`. However, the code generates a compiler error because, due to improper variable shadowing, `topCompetitor` has a narrower scope than it should if it is going to be reassigned. Fix the compiler error below and call `getWinner(competitors:)`, passing in the array `competitors`. Print the `name` property of the returned `User` object. You'll know that you fixed the function properly if the user returned is `activeSitter`.
  */
-func getWinner(competitors: [User]) -> User? {
-    var topCompetitor: User?
+func getWinner(competitors: [User]) -> User {
+    var topCompetitor: User = competitors[0]
     
     for competitor in competitors {
-        if let topCompetitor = topCompetitor {
-            if competitor.stepsToday > topCompetitor.stepsToday {
-                topCompetitor = competitor
-            }
-        } else {
+        if competitor.stepsToday > topCompetitor.stepsToday {
             topCompetitor = competitor
         }
     }
