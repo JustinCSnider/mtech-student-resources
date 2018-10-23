@@ -18,30 +18,32 @@ struct Question {
 var questions: [Question] = [Question(text: "It's christmas time, how will you celebrate?",
                                       type: .single,
                                       answers: [
-                                        Answer(text: "Hook up my homies with all the goods", type: .plug),
-                                        Answer(text: "Decorate and make sure it is exactly how you want, not to much or to little.", type: .levelSlider),
-                                        Answer(text: "You borrow money from your friends and buy them all presents they would love and slowly pay them back.", type: .creditCard),
-                                        Answer(text: "You like to steal all your friends presents and spend christmas alone.", type: .cancerStick)]),
+                                        Answer(text: "Hook up my homies", type: .plug),
+                                        Answer(text: "Decorate and make sure it is exactly how you want.", type: .levelSlider),
+                                        Answer(text: "You borrow money from your friends.", type: .creditCard),
+                                        Answer(text: "You like to steal all your friends presents.", type: .cancerStick)]),
                              Question(text: "What activities do you enjoy?",
                                       type: .multiple,
                                       answers: [
-                                        Answer(text: "Hanging out with friends", type: .plug),
+                                        Answer(text: "Hanging out", type: .plug),
                                         Answer(text: "Organizing", type: .levelSlider),
                                         Answer(text: "Shopping", type: .creditCard),
-                                        Answer(text: "Spitting on people when your riding the sky coaster", type: .cancerStick)]),
+                                        Answer(text: "Spitting", type: .cancerStick)]),
                              Question(text: "How much do you like people.",
                                       type: .ranged,
                                       answers: [
-                                        Answer(text: "I love them", type: .plug),
-                                        Answer(text: "I like them", type: .levelSlider),
+                                        Answer(text: "I hate them", type: .cancerStick),
                                         Answer(text: "I deal with them", type: .creditCard),
-                                        Answer(text: "I hate people", type: .cancerStick)])
+                                        Answer(text: "I like them", type: .levelSlider),
+                                        Answer(text: "I love them", type: .plug)])
 ]
 
 struct Answer {
     var text: String
     var type: ThingType
 }
+
+var answersChosen: [Answer] = []
 
 enum ThingType: Character {
     case plug = "🔌", levelSlider = "🎚", creditCard = "💳", cancerStick = "🚬"
