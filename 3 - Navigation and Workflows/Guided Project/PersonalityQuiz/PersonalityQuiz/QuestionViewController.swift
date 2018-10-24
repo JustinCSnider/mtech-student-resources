@@ -36,6 +36,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var questionProgessView: UIProgressView!
     
     
+    var answersChosen: [Answer] = []
     var questionIndex = 0
 
     override func viewDidLoad() {

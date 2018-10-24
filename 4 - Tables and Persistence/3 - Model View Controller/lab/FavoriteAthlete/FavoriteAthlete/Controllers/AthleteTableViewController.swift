@@ -33,12 +33,29 @@ class AthleteTableViewController: UITableViewController {
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        super.prepare(for: segue, sender: sender)
+        if let athleteViewController = segue.destination as? AthleteFormViewController {
+            if let indexPath = tableView.indexPathForSelectedRow, segue.identifier == PropertyKeys.editAthleteSegue {
+                athleteViewController.athlete = athletes[indexPath.row]
+            }
+        }
     }
- */
-
+    
+    @IBAction func unwindToAthleteTableView(segue: UIStoryboardSegue){
+        if let sourceViewController = segue.source as? AthleteFormViewController, let athlete = sourceViewController.athlete {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                athletes.remove(at: indexPath.row)
+                athletes.insert(athlete, at: indexPath.row)
+                tableView.deselectRow(at: indexPath, animated: true)
+            } else {
+                athletes.append(athlete)
+            }
+        } else {
+            print("This sucks")
+        }
+    }
 }

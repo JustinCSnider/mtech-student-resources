@@ -15,6 +15,13 @@ struct Question {
     var answers: [Answer]
 }
 
+
+
+struct Answer {
+    var text: String
+    var type: ThingType
+}
+
 var questions: [Question] = [Question(text: "It's christmas time, how will you celebrate?",
                                       type: .single,
                                       answers: [
@@ -37,13 +44,6 @@ var questions: [Question] = [Question(text: "It's christmas time, how will you c
                                         Answer(text: "I like them", type: .levelSlider),
                                         Answer(text: "I love them", type: .plug)])
 ]
-
-struct Answer {
-    var text: String
-    var type: ThingType
-}
-
-var answersChosen: [Answer] = []
 
 enum ThingType: Character {
     case plug = "🔌", levelSlider = "🎚", creditCard = "💳", cancerStick = "🚬"

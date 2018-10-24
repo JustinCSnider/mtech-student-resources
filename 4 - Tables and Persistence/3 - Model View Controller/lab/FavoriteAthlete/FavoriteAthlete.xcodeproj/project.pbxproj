@@ -12,6 +12,8 @@
 		A94375B51E4648230053B419 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A94375B41E4648230053B419 /* Assets.xcassets */; };
 		A94375B81E4648230053B419 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A94375B61E4648230053B419 /* LaunchScreen.storyboard */; };
 		A9FE274F1E4A8F0E00F01A14 /* AthleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE274E1E4A8F0E00F01A14 /* AthleteTableViewController.swift */; };
+		CC8B102F2180C28300AEEA19 /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B102E2180C28300AEEA19 /* Athlete.swift */; };
+		CC8B10342180C57800AEEA19 /* AthleteFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B10332180C57800AEEA19 /* AthleteFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		A94375B71E4648230053B419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A94375B91E4648230053B419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9FE274E1E4A8F0E00F01A14 /* AthleteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AthleteTableViewController.swift; sourceTree = "<group>"; };
+		CC8B102E2180C28300AEEA19 /* Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
+		CC8B10332180C57800AEEA19 /* AthleteFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteFormViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,40 @@
 		A94375AC1E4648230053B419 /* FavoriteAthlete */ = {
 			isa = PBXGroup;
 			children = (
+				CC8B10322180C30700AEEA19 /* Views */,
+				CC8B10312180C2FD00AEEA19 /* Controllers */,
+				CC8B10302180C2F200AEEA19 /* Models */,
 				A94375AD1E4648230053B419 /* AppDelegate.swift */,
-				A94375B11E4648230053B419 /* Main.storyboard */,
-				A9FE274E1E4A8F0E00F01A14 /* AthleteTableViewController.swift */,
 				A94375B41E4648230053B419 /* Assets.xcassets */,
-				A94375B61E4648230053B419 /* LaunchScreen.storyboard */,
 				A94375B91E4648230053B419 /* Info.plist */,
 			);
 			path = FavoriteAthlete;
+			sourceTree = "<group>";
+		};
+		CC8B10302180C2F200AEEA19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CC8B102E2180C28300AEEA19 /* Athlete.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC8B10312180C2FD00AEEA19 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9FE274E1E4A8F0E00F01A14 /* AthleteTableViewController.swift */,
+				CC8B10332180C57800AEEA19 /* AthleteFormViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CC8B10322180C30700AEEA19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A94375B11E4648230053B419 /* Main.storyboard */,
+				A94375B61E4648230053B419 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8B10342180C57800AEEA19 /* AthleteFormViewController.swift in Sources */,
 				A9FE274F1E4A8F0E00F01A14 /* AthleteTableViewController.swift in Sources */,
+				CC8B102F2180C28300AEEA19 /* Athlete.swift in Sources */,
 				A94375AE1E4648230053B419 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
