@@ -21,6 +21,7 @@ struct Answer {
     var text: String
     var type: ThingType
 }
+var answersChosen: [Answer] = []
 
 var questions: [Question] = [Question(text: "It's christmas time, how will you celebrate?",
                                       type: .single,
