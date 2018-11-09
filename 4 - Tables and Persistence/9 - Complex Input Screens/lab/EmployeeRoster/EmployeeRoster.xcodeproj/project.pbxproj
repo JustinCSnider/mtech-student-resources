@@ -14,6 +14,7 @@
 		A93AF3CB1E4FB5240099CF76 /* EmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AF3CA1E4FB5240099CF76 /* EmployeeListTableViewController.swift */; };
 		A93AF3CD1E4FB5320099CF76 /* EmployeeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AF3CC1E4FB5320099CF76 /* EmployeeDetailTableViewController.swift */; };
 		A93AF3CF1E4FB5410099CF76 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93AF3CE1E4FB5410099CF76 /* Employee.swift */; };
+		CCB005C32195EE8700E298FB /* EmployeeTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB005C22195EE8700E298FB /* EmployeeTypeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A93AF3CA1E4FB5240099CF76 /* EmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		A93AF3CC1E4FB5320099CF76 /* EmployeeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeDetailTableViewController.swift; sourceTree = "<group>"; };
 		A93AF3CE1E4FB5410099CF76 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		CCB005C22195EE8700E298FB /* EmployeeTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTypeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				A93AF3B81E4FB44E0099CF76 /* AppDelegate.swift */,
 				A93AF3BC1E4FB44E0099CF76 /* Main.storyboard */,
+				CCB005C22195EE8700E298FB /* EmployeeTypeTableViewController.swift */,
 				A93AF3CA1E4FB5240099CF76 /* EmployeeListTableViewController.swift */,
 				A93AF3CC1E4FB5320099CF76 /* EmployeeDetailTableViewController.swift */,
 				A93AF3CE1E4FB5410099CF76 /* Employee.swift */,
@@ -145,6 +148,7 @@
 				A93AF3CD1E4FB5320099CF76 /* EmployeeDetailTableViewController.swift in Sources */,
 				A93AF3B91E4FB44E0099CF76 /* AppDelegate.swift in Sources */,
 				A93AF3CF1E4FB5410099CF76 /* Employee.swift in Sources */,
+				CCB005C32195EE8700E298FB /* EmployeeTypeTableViewController.swift in Sources */,
 				A93AF3CB1E4FB5240099CF76 /* EmployeeListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
