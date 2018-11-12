@@ -4,9 +4,10 @@ import UIKit
 class EmployeeDetailTableViewController: UITableViewController, UITextFieldDelegate, EmployeeTypeDelegate {
     
     func didSelect(employeeType: EmployeeType) {
+        self.employeeType = employeeType
+        employeeTypeLabel.textColor = .black
         employeeTypeLabel.text = employeeType.description()
     }
-    
 
     struct PropertyKeys {
         static let unwindToListIndentifier = "UnwindToListSegue"
@@ -18,6 +19,8 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
     @IBOutlet weak var dobDatePicker: UIDatePicker!
     
     var employee: Employee?
+    var employeeType: EmployeeType?
+    
     var isEditingBirthday: Bool = false {
         didSet {
             tableView.beginUpdates()
@@ -94,10 +97,14 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
         return false
     }
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard let destination = segue.destination as? EmployeeTypeTableViewController else {return}
-        destination.
+        
+        destination.employeeType = employeeType
+        destination.delegate = self
     }
 
 }

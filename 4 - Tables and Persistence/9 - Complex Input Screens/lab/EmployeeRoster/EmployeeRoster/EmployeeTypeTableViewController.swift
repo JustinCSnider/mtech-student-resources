@@ -11,17 +11,15 @@ protocol EmployeeTypeDelegate {
     func didSelect(employeeType: EmployeeType)
 }
 
-class EmployeeTypeTableViewController: UITableViewController, EmployeeTypeDelegate {
-    func didSelect(employeeType: EmployeeType) {
-        self.employeeType = employeeType
-        
-    }
+class EmployeeTypeTableViewController: UITableViewController{
     
     
     var employeeType: EmployeeType?
+    var delegate: EmployeeTypeDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,6 +54,9 @@ class EmployeeTypeTableViewController: UITableViewController, EmployeeTypeDelega
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         employeeType = EmployeeType.all[indexPath.row]
+        if let delegate = delegate, let employeeType = employeeType {
+            delegate.didSelect(employeeType: employeeType)
+        }
         tableView.reloadData()
     }
 
