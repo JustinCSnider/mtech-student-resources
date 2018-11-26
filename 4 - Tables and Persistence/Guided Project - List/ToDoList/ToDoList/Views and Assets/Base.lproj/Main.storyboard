@@ -54,7 +54,6 @@
                                     <constraint firstItem="ui6-tC-Z5R" firstAttribute="leading" secondItem="sUU-oq-MVf" secondAttribute="leading" constant="16" id="stw-gS-ush"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="completeButtonTapped" destination="ui6-tC-Z5R" id="fCI-Nb-Ydw"/>
                                     <outlet property="isCompleteButton" destination="ui6-tC-Z5R" id="xph-b3-KJb"/>
                                     <outlet property="titleLabel" destination="sSa-hL-s49" id="LST-ZC-2fg"/>
                                     <segue destination="T4H-3Z-oQe" kind="show" identifier="showDetails" id="OPh-V7-9VN"/>
