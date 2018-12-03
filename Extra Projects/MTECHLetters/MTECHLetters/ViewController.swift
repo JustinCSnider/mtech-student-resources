@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class ViewController: UIViewController {
     @IBOutlet weak var letterM: UILabel!
@@ -17,13 +18,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var animationButton: UIButton!
     
     var animationButtonTapped: Bool = false
+    let myMediaPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myMediaPlayer.setQueue(with: MPMediaQuery.songs())
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     @IBAction func animationButtonTapped(_ sender: UIButton) {
+        myMediaPlayer.play()
         if animationButtonTapped == false {
             animationButton.setTitle("Reset", for: .normal)
             UIView.animate(withDuration: 1.5, animations: {
@@ -41,7 +47,7 @@ class ViewController: UIViewController {
             animationButtonTapped = true
         } else {
             animationButton.setTitle("Play", for: .normal)
-            UIView.animate(withDuration: 1.5, delay: 0, options: .beginFromCurrentState, animations:{
+            UIView.animate(withDuration: 1.5, animations: {
                 self.letterE.transform = CGAffineTransform(scaleX: 1, y: 1)
             }) { (_) in
                 UIView.animate(withDuration: 1.5, animations: {
