@@ -8,7 +8,8 @@ class StoreItemListTableViewController: UITableViewController {
     
     // add item controller property
     
-    var items = [String]()
+    var items = [StoreItem]()
+    var storeItemController = StoreItemController()
     
     let queryOptions = ["movie", "music", "software", "ebook"]
     
@@ -26,21 +27,40 @@ class StoreItemListTableViewController: UITableViewController {
         let mediaType = queryOptions[filterSegmentedControl.selectedSegmentIndex]
         
         if !searchTerm.isEmpty {
+            let query = [
+                "term" : searchTerm,
+                "media" : mediaType,
+                "limit" : "10",
+                "lang" : "en_us"
+            ]
             
-            // set up query dictionary
             
-            // use the item controller to fetch items
-            // if successful, use the main queue to set self.items and reload the table view
-            // otherwise, print an error to the console
+            storeItemController.fetchItems(matching: query) { (results) in
+                DispatchQueue.main.async {
+                    if let results = results {
+                        self.items = results
+                        self.tableView.reloadData()
+                    }
+                }
+            }
         }
+        
     }
     
     func configure(cell: UITableViewCell, forItemAt indexPath: IndexPath) {
         
         let item = items[indexPath.row]
         
-        cell.textLabel?.text = item
+        cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = item.artist
         
+        URLSession.shared.dataTask(with: item.artworkURL) { (data, response, error) in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    cell.imageView?.image = image
+                }
+            }
+        }.resume()
         // set label to the item's name
         // set detail label to the item's subtitle
         // reset the image view to the gray image
@@ -77,6 +97,10 @@ class StoreItemListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+//========================================
+//MARK: - Extensions
+//========================================
 
 extension StoreItemListTableViewController: UISearchBarDelegate {
 
