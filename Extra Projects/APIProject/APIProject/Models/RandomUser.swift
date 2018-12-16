@@ -24,9 +24,8 @@ struct RandomUser {
             let userName = unwrappedLogin["username"] as? String,
             let firstName = unwrappedName["first"] as? String,
             let lastName = unwrappedName["last"] as? String,
-            let ageString = unwrappedDOB["age"] as? String,
+            let age = unwrappedDOB["age"] as? Int,
             let thumbNailString = unwrappedPicture["thumbnail"] as? String,
-            let age = Int(ageString),
             let thumbNailURL = URL(string: thumbNailString) else { return nil }
         
         self.userName = userName

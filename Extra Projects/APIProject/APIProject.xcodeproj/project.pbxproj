@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC08A01D21C3F96B006186BB /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08A01C21C3F96B006186BB /* NetworkController.swift */; };
+		CC08A02521C40D14006186BB /* RandomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08A02421C40D14006186BB /* RandomUserTableViewCell.swift */; };
+		CC08A02721C41357006186BB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC08A02621C41357006186BB /* DetailViewController.swift */; };
+		CC0C4D3321C69A720046EF24 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0C4D3221C69A720046EF24 /* FilterTableViewController.swift */; };
 		CC5E988121C15B79009E5E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E988021C15B79009E5E17 /* AppDelegate.swift */; };
 		CC5E988321C15B79009E5E17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E988221C15B79009E5E17 /* ViewController.swift */; };
 		CC5E988621C15B79009E5E17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC5E988421C15B79009E5E17 /* Main.storyboard */; };
@@ -16,7 +20,6 @@
 		CC5E98A121C15B7A009E5E17 /* APIProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98A021C15B7A009E5E17 /* APIProjectUITests.swift */; };
 		CC5E98B221C1636A009E5E17 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98B121C1636A009E5E17 /* ModelController.swift */; };
 		CC5E98B421C1641C009E5E17 /* RandomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98B321C1641C009E5E17 /* RandomUser.swift */; };
-		CC5E98B621C171FF009E5E17 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98B521C171FF009E5E17 /* URL+Helpers.swift */; };
 		CC5E98B821C1731C009E5E17 /* Representative.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98B721C1731C009E5E17 /* Representative.swift */; };
 		CC5E98BA21C17335009E5E17 /* NobelWinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5E98B921C17335009E5E17 /* NobelWinner.swift */; };
 /* End PBXBuildFile section */
@@ -39,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC08A01C21C3F96B006186BB /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		CC08A02421C40D14006186BB /* RandomUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserTableViewCell.swift; sourceTree = "<group>"; };
+		CC08A02621C41357006186BB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CC0C4D3221C69A720046EF24 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		CC5E987D21C15B79009E5E17 /* APIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5E988021C15B79009E5E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC5E988221C15B79009E5E17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +61,6 @@
 		CC5E98A221C15B7A009E5E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC5E98B121C1636A009E5E17 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		CC5E98B321C1641C009E5E17 /* RandomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUser.swift; sourceTree = "<group>"; };
-		CC5E98B521C171FF009E5E17 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
 		CC5E98B721C1731C009E5E17 /* Representative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Representative.swift; sourceTree = "<group>"; };
 		CC5E98B921C17335009E5E17 /* NobelWinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NobelWinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +118,6 @@
 				CC5E98AE21C1630A009E5E17 /* Models */,
 				CC5E988021C15B79009E5E17 /* AppDelegate.swift */,
 				CC5E988C21C15B7A009E5E17 /* Info.plist */,
-				CC5E98B521C171FF009E5E17 /* URL+Helpers.swift */,
 			);
 			path = APIProject;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				CC5E98B321C1641C009E5E17 /* RandomUser.swift */,
 				CC5E98B721C1731C009E5E17 /* Representative.swift */,
 				CC5E98B921C17335009E5E17 /* NobelWinner.swift */,
+				CC08A02421C40D14006186BB /* RandomUserTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,7 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				CC5E988221C15B79009E5E17 /* ViewController.swift */,
+				CC08A02621C41357006186BB /* DetailViewController.swift */,
 				CC5E98B121C1636A009E5E17 /* ModelController.swift */,
+				CC08A01C21C3F96B006186BB /* NetworkController.swift */,
+				CC0C4D3221C69A720046EF24 /* FilterTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,9 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC08A02721C41357006186BB /* DetailViewController.swift in Sources */,
+				CC08A01D21C3F96B006186BB /* NetworkController.swift in Sources */,
 				CC5E98B221C1636A009E5E17 /* ModelController.swift in Sources */,
+				CC0C4D3321C69A720046EF24 /* FilterTableViewController.swift in Sources */,
 				CC5E98BA21C17335009E5E17 /* NobelWinner.swift in Sources */,
-				CC5E98B621C171FF009E5E17 /* URL+Helpers.swift in Sources */,
+				CC08A02521C40D14006186BB /* RandomUserTableViewCell.swift in Sources */,
 				CC5E98B821C1731C009E5E17 /* Representative.swift in Sources */,
 				CC5E988321C15B79009E5E17 /* ViewController.swift in Sources */,
 				CC5E988121C15B79009E5E17 /* AppDelegate.swift in Sources */,
