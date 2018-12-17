@@ -16,9 +16,9 @@ struct NetworkController {
         case .randomUser:
             url = URL(string: "https://randomuser.me/api/?results=" + searchText)!
         case .representative:
-            url = URL(string: "http://whoismyrepresentative.com/getall")!
+            url = URL(string: "https://whoismyrepresentative.com/getall_reps_bystate.php?output=json&state=" + searchText)!
         case .nobelWinner:
-            url = URL(string: "http://api.nobelprize.org/v1/prize.json")!
+            url = URL(string: "http://api.nobelprize.org/v1/prize.json?year=" + searchText)!
         }
         
         DispatchQueue.main.async {

@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol newTypeDelegate {
+    func newTypeSet(with title: String, placeHolderText: String)
+}
+
 class FilterTableViewController: UITableViewController {
     @IBOutlet weak var randomUserButton: UIButton!
     @IBOutlet weak var representativeButton: UIButton!
     @IBOutlet weak var nobelWinnerButton: UIButton!
+    
+    var delegate: newTypeDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +28,13 @@ class FilterTableViewController: UITableViewController {
         switch sender {
         case randomUserButton:
             ModelController.currentType = .randomUser
+            delegate?.newTypeSet(with: "Random Users", placeHolderText: "Amount")
         case representativeButton:
             ModelController.currentType = .representative
+            delegate?.newTypeSet(with: "Representatives", placeHolderText: "State")
         case nobelWinnerButton:
             ModelController.currentType = .nobelWinner
+            delegate?.newTypeSet(with: "Nobel Prize Winners", placeHolderText: "Year")
         default:
             break
         }
