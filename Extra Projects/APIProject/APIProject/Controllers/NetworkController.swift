@@ -29,15 +29,15 @@ struct NetworkController {
             
             if let data = data,
                 let rawJSON = try? JSONSerialization.jsonObject(with: data),
-                let json = rawJSON as? [String: Any],
-                let resultsArray = json["results"] as? [[String: Any]] {
+                let json = rawJSON as? [String: Any] {
                 var results: [Any] = []
-                switch ModelController.currentType {
-                case .randomUser:
-                    results = resultsArray.compactMap { RandomUser(json: $0) }
-                case .representative:
-                    results = resultsArray.compactMap { Representative(json: $0) }
-                case .nobelWinner:
+                if let resultsArray = json["results"] as? [[String: Any]] {
+                    if ModelController.currentType == .randomUser {
+                        results = resultsArray.compactMap { RandomUser(json: $0) }
+                    } else {
+                        results = resultsArray.compactMap { Representative(json: $0) }
+                    }
+                } else if let resultsArray = json["prizes"] as? [[String: Any]] {
                     results = resultsArray.compactMap { NobelWinner(json: $0) }
                 }
                 

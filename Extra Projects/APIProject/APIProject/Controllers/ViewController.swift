@@ -38,7 +38,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ModelController.currentItems.count
+        if ModelController.currentType == .representative || ModelController.currentType == .randomUser {
+            return ModelController.currentItems.count
+        } else {
+            guard let nobelWinner = ModelController.currentItems[section] as? NobelWinner else {return 1}
+            
+            return nobelWinner.laureates.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,10 +75,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard let nobelWinners = ModelController.currentItems as? [NobelWinner] else {return ""}
-//        return nobelWinners[section - 1].category
-//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch ModelController.currentType {
+        case .nobelWinner:
+            guard let nobelWinners = ModelController.currentItems as? [NobelWinner] else {return nil}
+            return nobelWinners[section].category
+        case .representative:
+            return ""
+        case .randomUser:
+            return ""
+        }
+    }
     
     func newTypeSet(with title: String, placeHolderText: String) {
         navigationItem.title = title
@@ -112,7 +125,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.textLabel?.text = "Name: " + currentItem.name
             cell.detailTextLabel?.text = "District: " + currentItem.district
         case .nobelWinner:
-            guard let currentItem = ModelController.currentItems[indexPath.row] as? NobelWinner else {return}
+            guard let currentItem = ModelController.currentItems[indexPath.section] as? NobelWinner else {return}
             
             cell.textLabel?.text = "Name: " + currentItem.laureates[indexPath.row].firstName + " " + currentItem.laureates[indexPath.row].surName
         }
@@ -120,7 +133,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController {
-            destination.currentItem = ModelController.currentItems[tableView.indexPathForSelectedRow!.row]
+            if ModelController.currentType == .randomUser || ModelController.currentType == .representative {
+                destination.currentItem = ModelController.currentItems[tableView.indexPathForSelectedRow!.row]
+            } else {
+                destination.currentItem = ModelController.currentItems[tableView.indexPathForSelectedRow!.section]
+                guard let currentItem = ModelController.currentItems[tableView.indexPathForSelectedRow!.section] as? NobelWinner else {return}
+                destination.selectedItem = currentItem.laureates[tableView.indexPathForSelectedRow!.row]
+            }
         } else if let destination = segue.destination as? FilterTableViewController {
             destination.delegate = self
         }

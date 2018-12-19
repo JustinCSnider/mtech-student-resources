@@ -19,8 +19,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var representativeDistrictLabel: UILabel!
     @IBOutlet weak var representativePartyLabel: UILabel!
     @IBOutlet weak var representativePhoneLabel: UILabel!
+    @IBOutlet weak var nobelWinnerStackView: UIStackView!
+    @IBOutlet weak var nobelWinnerFullNameLabel: UILabel!
+    @IBOutlet weak var nobelWinnerYearLabel: UILabel!
+    @IBOutlet weak var nobelWinnerMotivationLabel: UILabel!
+    @IBOutlet weak var nobelWinnerMotivationTextView: UITextView!
     
     var currentItem: Any?
+    var selectedItem: Laureate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +58,18 @@ class DetailViewController: UIViewController {
             representativePartyLabel.text = "Party: " + currentItem.party
             representativePhoneLabel.text = "Phone: " + currentItem.phone
         case .nobelWinner:
-            break
+            nobelWinnerStackView.isHidden = false
+            guard let currentItem = currentItem as? NobelWinner else {return}
+            navigationItem.title = "Nobel Prize Winners of " + currentItem.year
+            
+            nobelWinnerFullNameLabel.text = "Full Name: " + (selectedItem?.firstName ?? "") + " " + (selectedItem?.surName ?? "")
+            nobelWinnerYearLabel.text = "Year: " + currentItem.year
+            if selectedItem?.motivation == "" {
+                nobelWinnerMotivationLabel.isHidden = true
+            } else {
+                nobelWinnerMotivationLabel.isHidden = false
+            }
+            nobelWinnerMotivationTextView.text = (selectedItem?.motivation ?? "")
         }
         // Do any additional setup after loading the view.
     }
@@ -61,5 +78,6 @@ class DetailViewController: UIViewController {
         super.viewDidDisappear(animated)
         randomUserStackView.isHidden = true
         representativeStackView.isHidden = true
+        nobelWinnerStackView.isHidden = true
     }
 }
