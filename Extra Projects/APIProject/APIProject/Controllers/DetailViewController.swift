@@ -33,43 +33,11 @@ class DetailViewController: UIViewController {
         
         switch ModelController.currentType {
         case .randomUser:
-            randomUserStackView.isHidden = false
-            guard let currentItem = currentItem as? RandomUser else {return}
-            navigationItem.title = currentItem.userName
-            
-            randomUserFirstNameLabel.text = "First Name: " + currentItem.firstName
-            randomUserLastNameLabel.text = "Last Name: " + currentItem.lastName
-            randomUserAgeLabel.text = "Age: " + String(currentItem.age)
-            
-            URLSession.shared.dataTask(with: currentItem.thumbNailURL) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.randomUserThumbNail.image = image
-                    }
-                }
-            }.resume()
+            randomUserCase()
         case .representative:
-            representativeStackView.isHidden = false
-            guard let currentItem = currentItem as? Representative else {return}
-            navigationItem.title = "Representative in " + currentItem.state
-            
-            representativeFullNameLabel.text = "Full Name: " + currentItem.name
-            representativeDistrictLabel.text = "District: " + currentItem.district
-            representativePartyLabel.text = "Party: " + currentItem.party
-            representativePhoneLabel.text = "Phone: " + currentItem.phone
+            representativeCase()
         case .nobelWinner:
-            nobelWinnerStackView.isHidden = false
-            guard let currentItem = currentItem as? NobelWinner else {return}
-            navigationItem.title = "Nobel Prize Winners of " + currentItem.year
-            
-            nobelWinnerFullNameLabel.text = "Full Name: " + (selectedItem?.firstName ?? "") + " " + (selectedItem?.surName ?? "")
-            nobelWinnerYearLabel.text = "Year: " + currentItem.year
-            if selectedItem?.motivation == "" {
-                nobelWinnerMotivationLabel.isHidden = true
-            } else {
-                nobelWinnerMotivationLabel.isHidden = false
-            }
-            nobelWinnerMotivationTextView.text = (selectedItem?.motivation ?? "")
+            nobelWinnerCase()
         }
         // Do any additional setup after loading the view.
     }
@@ -79,5 +47,49 @@ class DetailViewController: UIViewController {
         randomUserStackView.isHidden = true
         representativeStackView.isHidden = true
         nobelWinnerStackView.isHidden = true
+    }
+    
+    func randomUserCase() {
+        randomUserStackView.isHidden = false
+        guard let currentItem = currentItem as? RandomUser else {return}
+        navigationItem.title = currentItem.userName
+        
+        randomUserFirstNameLabel.text = "First Name: " + currentItem.firstName
+        randomUserLastNameLabel.text = "Last Name: " + currentItem.lastName
+        randomUserAgeLabel.text = "Age: " + String(currentItem.age)
+        
+        URLSession.shared.dataTask(with: currentItem.thumbNailURL) { (data, response, error) in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.randomUserThumbNail.image = image
+                }
+            }
+            }.resume()
+    }
+    
+    func representativeCase() {
+        representativeStackView.isHidden = false
+        guard let currentItem = currentItem as? Representative else {return}
+        navigationItem.title = "Representative in " + currentItem.state
+        
+        representativeFullNameLabel.text = "Full Name: " + currentItem.name
+        representativeDistrictLabel.text = "District: " + currentItem.district
+        representativePartyLabel.text = "Party: " + currentItem.party
+        representativePhoneLabel.text = "Phone: " + currentItem.phone
+    }
+    
+    func nobelWinnerCase() {
+        nobelWinnerStackView.isHidden = false
+        guard let currentItem = currentItem as? NobelWinner else {return}
+        navigationItem.title = "Nobel Prize Winners of " + currentItem.year
+        
+        nobelWinnerFullNameLabel.text = "Full Name: " + (selectedItem?.firstName ?? "") + " " + (selectedItem?.surName ?? "")
+        nobelWinnerYearLabel.text = "Year: " + currentItem.year
+        if selectedItem?.motivation == "" {
+            nobelWinnerMotivationLabel.isHidden = true
+        } else {
+            nobelWinnerMotivationLabel.isHidden = false
+        }
+        nobelWinnerMotivationTextView.text = (selectedItem?.motivation ?? "")
     }
 }

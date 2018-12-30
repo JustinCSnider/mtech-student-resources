@@ -64,6 +64,7 @@ func fetchItems(matching query: [String : String], completion: @escaping ([Store
         return
     }
     
+    print(url)
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
         let decoder = JSONDecoder()
         
