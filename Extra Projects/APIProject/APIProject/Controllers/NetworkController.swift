@@ -16,7 +16,7 @@ struct NetworkController {
         case .randomUser:
             url = URL(string: "https://randomuser.me/api/?results=" + searchText)!
         case .representative:
-            url = URL(string: "https://whoismyrepresentative.com/getall_reps_bystate.php?output=json&state=" + searchText)!
+            url = URL(string: "https://whoismyrepresentative.com/getall_reps_bystate.php?output=json&state=" + stateList[searchText]!)!
         case .nobelWinner:
             url = URL(string: "http://api.nobelprize.org/v1/prize.json?year=" + searchText)!
         }
@@ -26,17 +26,17 @@ struct NetworkController {
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let decoder = JSONDecoder()
             
             if let data = data,
                 let rawJSON = try? JSONSerialization.jsonObject(with: data),
                 let json = rawJSON as? [String: Any] {
                 var results: [Any] = []
-                if let resultsArray = json["results"] as? [[String: Any]] {
-                    if ModelController.currentType == .randomUser {
-                        results = resultsArray.compactMap { RandomUser(json: $0) }
-                    } else {
-                        results = resultsArray.compactMap { Representative(json: $0) }
-                    }
+                
+                if let randomUsers = try? decoder.decode(RandomUsers.self, from: data) {
+                    results = randomUsers.results
+                } else if let representatives = try? decoder.decode(Representatives.self, from: data) {
+                    results = representatives.results
                 } else if let resultsArray = json["prizes"] as? [[String: Any]] {
                     results = resultsArray.compactMap { NobelWinner(json: $0) }
                 }

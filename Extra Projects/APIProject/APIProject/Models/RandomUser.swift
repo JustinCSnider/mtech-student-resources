@@ -8,30 +8,43 @@
 
 import Foundation
 
-struct RandomUser {
+struct RandomUser: Codable {
     var userName: String
     var firstName: String
     var lastName: String
     var age: Int
     var thumbNailURL: URL
     
-    init?(json: [String : Any]) {
-        
-        guard let unwrappedLogin = json["login"] as? [String : Any],
-            let unwrappedName = json["name"] as? [String : Any],
-            let unwrappedDOB = json["dob"] as? [String : Any],
-            let unwrappedPicture = json["picture"] as? [String : Any],
-            let userName = unwrappedLogin["username"] as? String,
-            let firstName = unwrappedName["first"] as? String,
-            let lastName = unwrappedName["last"] as? String,
-            let age = unwrappedDOB["age"] as? Int,
-            let thumbNailString = unwrappedPicture["thumbnail"] as? String,
-            let thumbNailURL = URL(string: thumbNailString) else { return nil }
-        
-        self.userName = userName
-        self.firstName = firstName
-        self.lastName = lastName
-        self.age = age
-        self.thumbNailURL = thumbNailURL
+    enum CodingKeys: String, CodingKey {
+        case userName = "username"
+        case firstName = "first"
+        case lastName = "last"
+        case age
+        case thumbNailURL = "thumbnail"
     }
+    
+    enum AdditionalKeys: CodingKey {
+        case login
+        case name
+        case dob
+        case picture
+    }
+    
+    init(from decoder: Decoder) throws {
+        let rootContainer = try decoder.container(keyedBy: AdditionalKeys.self)
+        let loginContainer = try rootContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: AdditionalKeys.login)
+        let nameContainer = try rootContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: AdditionalKeys.name)
+        let dobContainer = try rootContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: AdditionalKeys.dob)
+        let pictureContainer = try rootContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: AdditionalKeys.picture)
+        self.userName = try loginContainer.decode(String.self, forKey: CodingKeys.userName)
+        self.firstName = try nameContainer.decode(String.self, forKey: CodingKeys.firstName)
+        self.lastName = try nameContainer.decode(String.self, forKey: CodingKeys.lastName)
+        self.age = try dobContainer.decode(Int.self, forKey: CodingKeys.age)
+        let thumbNailString = try pictureContainer.decode(String.self, forKey: CodingKeys.thumbNailURL)
+        self.thumbNailURL = URL(string: thumbNailString)!
+    }
+}
+
+struct RandomUsers: Codable {
+    let results: [RandomUser]
 }
