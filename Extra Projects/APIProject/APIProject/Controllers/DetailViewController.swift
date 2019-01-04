@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var randomUserStackView: UIStackView!
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
     
     var currentItem: Any?
     var selectedItem: Laureate?
+    var audioPlayer = AVAudioPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,5 +93,9 @@ class DetailViewController: UIViewController {
             nobelWinnerMotivationLabel.isHidden = false
         }
         nobelWinnerMotivationTextView.text = (selectedItem?.motivation ?? "")
+    }
+    
+    func startAudio() {
+        
     }
 }
