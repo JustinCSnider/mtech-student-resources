@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fH-uS-8YB">
-                                                <rect key="frame" x="87" y="5" width="75" height="21"/>
+                                                <rect key="frame" x="89.5" y="5" width="71" height="20.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.97638517619999998" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,12 +47,18 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="Rud-Zl-Jv2"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsE-nX-aCs">
                                                         <rect key="frame" x="0.0" y="78" width="250" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="F7q-0V-Q2q"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -63,7 +69,7 @@
                                                     <color key="titleColor" red="0.97638517619999998" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="submitButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uOv-5h-Mmk"/>
+                                                    <action selector="submitButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7iO-TS-YHR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
