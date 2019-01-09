@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //========================================
     //MARK: - Properties
@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     
     var sentFrom: String?
     var currentMemory: Memory?
+    var feelings: [Feeling]?
     
     //========================================
     //MARK: - IBOutlets
@@ -24,6 +25,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var memoryTextField: UITextField!
     @IBOutlet weak var CRUDButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     //========================================
     //MARK: - IBActions
@@ -53,10 +55,40 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         if let currentMemory = currentMemory {
             memoryTextField.text = currentMemory.name
+            fetchFeelings()
         }
         updateUI()
         
         memoryTextField.becomeFirstResponder()
+        
+        CRUDButton.layer.cornerRadius = 5
+        CRUDButton.layer.masksToBounds = true
+        
+        tableView.layer.cornerRadius = 5
+        tableView.layer.borderWidth = 1.0
+    }
+    
+    //========================================
+    //MARK: - Table View Delegate/Data Methods
+    //========================================
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        
+        if indexPath.row == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "addNewFeelingCell", for: indexPath) as! addNewFeelingTableViewCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "feelingCell", for: indexPath)
+        }
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let feelings = feelings else {return 0}
+        
+        return feelings.count
     }
 
     //========================================
@@ -104,6 +136,17 @@ class DetailViewController: UIViewController {
         } catch {
             print("Failed to save")
             ContextHelper.context.rollback()
+        }
+    }
+    
+    private func fetchFeelings() {
+        let feelingsFetchRequest = NSFetchRequest<Feeling>(entityName: Feeling.entityName)
+        
+        do {
+            self.feelings = try ContextHelper.context.fetch(feelingsFetchRequest)
+        } catch {
+            self.feelings = []
+            print(error)
         }
     }
 }

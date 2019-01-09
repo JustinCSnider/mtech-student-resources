@@ -101,7 +101,7 @@ class MemoryListTableViewController: UITableViewController {
             self.memoryList = try ContextHelper.context.fetch(memoryFetchRequest)
         } catch {
             self.memoryList = []
-            print("Something went wrong \(error)")
+            print(error)
         }
     }
     

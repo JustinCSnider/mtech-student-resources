@@ -18,6 +18,8 @@
 		CC18836E21E5009300404AB7 /* MemoryList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC18836C21E5009300404AB7 /* MemoryList.xcdatamodeld */; };
 		CC18837021E502C900404AB7 /* MemoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC18836F21E502C900404AB7 /* MemoryListTableViewController.swift */; };
 		CC18837221E50B1D00404AB7 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC18837121E50B1D00404AB7 /* Memory.swift */; };
+		CCD05CED21E65E6D008A3CDD /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD05CEC21E65E6D008A3CDD /* Feeling.swift */; };
+		CCD05CEF21E66435008A3CDD /* addNewFeelingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD05CEE21E66435008A3CDD /* addNewFeelingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		CC18836D21E5009300404AB7 /* RememberList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RememberList.xcdatamodel; sourceTree = "<group>"; };
 		CC18836F21E502C900404AB7 /* MemoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryListTableViewController.swift; sourceTree = "<group>"; };
 		CC18837121E50B1D00404AB7 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		CCD05CEC21E65E6D008A3CDD /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
+		CCD05CEE21E66435008A3CDD /* addNewFeelingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewFeelingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			children = (
 				CC18836C21E5009300404AB7 /* MemoryList.xcdatamodeld */,
 				CC18837121E50B1D00404AB7 /* Memory.swift */,
+				CCD05CEC21E65E6D008A3CDD /* Feeling.swift */,
+				CCD05CEE21E66435008A3CDD /* addNewFeelingTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,8 +301,10 @@
 				CC18837221E50B1D00404AB7 /* Memory.swift in Sources */,
 				CC18836E21E5009300404AB7 /* MemoryList.xcdatamodeld in Sources */,
 				CC18837021E502C900404AB7 /* MemoryListTableViewController.swift in Sources */,
+				CCD05CED21E65E6D008A3CDD /* Feeling.swift in Sources */,
 				CC18836B21E4FDEE00404AB7 /* CoreDataStack.swift in Sources */,
 				CC18833C21E4FCEE00404AB7 /* DetailViewController.swift in Sources */,
+				CCD05CEF21E66435008A3CDD /* addNewFeelingTableViewCell.swift in Sources */,
 				CC18833A21E4FCEE00404AB7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

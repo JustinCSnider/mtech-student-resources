@@ -11,6 +11,7 @@ import CoreData
 
 class Memory: NSManagedObject {
     @NSManaged var name: String
+    @NSManaged var feelings: NSSet?
     
     static var entityName: String {return "Memory"}
 }

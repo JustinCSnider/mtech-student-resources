@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Feeling" representedClassName=".Feeling" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="memory" maxCount="1" deletionRule="Nullify" destinationEntity="Memory" inverseName="feelings" inverseEntity="Memory" syncable="YES"/>
+    </entity>
     <entity name="Memory" representedClassName=".Memory" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="feelings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feeling" inverseName="memory" inverseEntity="Feeling" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Memory" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Memory" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Feeling" positionX="-63" positionY="-9" width="128" height="75"/>
     </elements>
 </model>
