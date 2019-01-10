@@ -74,9 +74,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="memoryTextFieldChanged:" destination="C4Z-Ey-MXA" eventType="editingChanged" id="eOJ-Kj-CAi"/>
+                                            <outlet property="delegate" destination="C4Z-Ey-MXA" id="aDQ-BE-V5P"/>
                                         </connections>
                                     </textField>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-4U-w38">
+                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-4U-w38">
                                         <rect key="frame" x="0.0" y="38" width="375" height="227"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -110,14 +111,27 @@
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="C4Z-Ey-MXA" id="Qp7-eP-jG3"/>
+                                                            </connections>
                                                         </textField>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sR-0R-4tK">
-                                                            <rect key="frame" x="314" y="6" width="46" height="30"/>
+                                                            <rect key="frame" x="275" y="6" width="79" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <state key="normal" title="Button"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" title="Save">
+                                                                <color key="titleColor" red="0.97638517619999998" green="0.97652524709999999" blue="0.97635477780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="saveButtonTapped:" destination="GzL-3E-WuX" eventType="touchUpInside" id="h6N-rO-xMO"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="feelingTextField" destination="N89-wr-gd4" id="jIR-R5-ZMv"/>
+                                                    <outlet property="saveButton" destination="7sR-0R-4tK" id="uAg-8o-rvN"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>

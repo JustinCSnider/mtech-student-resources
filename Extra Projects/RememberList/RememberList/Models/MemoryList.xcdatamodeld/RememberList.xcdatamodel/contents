@@ -9,7 +9,7 @@
         <relationship name="feelings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Feeling" inverseName="memory" inverseEntity="Feeling" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Memory" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="Feeling" positionX="-63" positionY="-9" width="128" height="75"/>
+        <element name="Memory" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>

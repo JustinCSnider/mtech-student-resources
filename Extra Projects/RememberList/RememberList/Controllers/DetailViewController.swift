@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol addFeelingDelegate {
+    func addFeeling(name: String)
+}
+
+class DetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, addFeelingDelegate {
     
     //========================================
     //MARK: - Properties
@@ -17,7 +21,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var sentFrom: String?
     var currentMemory: Memory?
-    var feelings: [Feeling]?
+    
+    var memory: Memory? {
+        
+//        ContextHelper.context
+        return nil
+    }
     
     //========================================
     //MARK: - IBOutlets
@@ -55,7 +64,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         if let currentMemory = currentMemory {
             memoryTextField.text = currentMemory.name
-            fetchFeelings()
+            tableView.isUserInteractionEnabled = true
         }
         updateUI()
         
@@ -76,9 +85,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = UITableViewCell()
         
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "addNewFeelingCell", for: indexPath) as! addNewFeelingTableViewCell
+            let addNewFeelingCell = tableView.dequeueReusableCell(withIdentifier: "addNewFeelingCell", for: indexPath) as! addNewFeelingTableViewCell
+            addNewFeelingCell.delegate = self
+            cell = addNewFeelingCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "feelingCell", for: indexPath)
+            var feelings = currentMemory?.feelings?.allObjects as! [Feeling]
+            cell.textLabel?.text = feelings[indexPath.row - 1].name
         }
         
         
@@ -86,9 +99,51 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let feelings = feelings else {return 0}
+        guard let feelings = currentMemory?.feelings else {return 1}
         
-        return feelings.count
+        return feelings.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let currentMemory = currentMemory,
+                let feelings = currentMemory.feelings?.allObjects as? [Feeling] else { return }
+            
+            let feeling = feelings[indexPath.row - 1]
+            
+            ContextHelper.context.delete(feeling)
+            saveCurrentContext()
+            
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    //========================================
+    //MARK: - Add Feeling Delegate Methods
+    //========================================
+    
+    func addFeeling(name: String) {
+        guard let currentMemory = currentMemory else {return}
+        let newFeeling = NSEntityDescription.insertNewObject(forEntityName: Feeling.entityName, into: ContextHelper.context) as! Feeling
+        newFeeling.name = name
+        newFeeling.memory = currentMemory
+        
+        saveCurrentContext()
+        
+        let newIndexPath = IndexPath(row: currentMemory.feelings!.count, section: 0)
+        
+        tableView.insertRows(at: [newIndexPath], with: .left)
+    }
+    
+    //========================================
+    //MARK: - Text Field Delegate Methods
+    //========================================
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     //========================================
@@ -122,7 +177,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         do {
             try ContextHelper.context.save()
         } catch {
-            print("Failed to save")
+            print(error)
             ContextHelper.context.rollback()
         }
     }
@@ -136,17 +191,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } catch {
             print("Failed to save")
             ContextHelper.context.rollback()
-        }
-    }
-    
-    private func fetchFeelings() {
-        let feelingsFetchRequest = NSFetchRequest<Feeling>(entityName: Feeling.entityName)
-        
-        do {
-            self.feelings = try ContextHelper.context.fetch(feelingsFetchRequest)
-        } catch {
-            self.feelings = []
-            print(error)
         }
     }
 }
