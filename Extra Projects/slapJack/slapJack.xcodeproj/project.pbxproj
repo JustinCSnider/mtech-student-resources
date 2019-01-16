@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0E23D321EF80020062F8D8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E23D221EF80010062F8D8 /* Deck.swift */; };
 		CCBB09CC21EE3E97005EB627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09CB21EE3E97005EB627 /* AppDelegate.swift */; };
-		CCBB09CE21EE3E97005EB627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09CD21EE3E97005EB627 /* ViewController.swift */; };
+		CCBB09CE21EE3E97005EB627 /* SlapJackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09CD21EE3E97005EB627 /* SlapJackViewController.swift */; };
 		CCBB09D121EE3E97005EB627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCBB09CF21EE3E97005EB627 /* Main.storyboard */; };
 		CCBB09D321EE3E98005EB627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCBB09D221EE3E98005EB627 /* Assets.xcassets */; };
 		CCBB09D621EE3E98005EB627 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCBB09D421EE3E98005EB627 /* LaunchScreen.storyboard */; };
 		CCBB09E121EE3EEB005EB627 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E021EE3EEB005EB627 /* NetworkController.swift */; };
+		CCBB09E321EE4970005EB627 /* CardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E221EE4970005EB627 /* CardController.swift */; };
+		CCBB09E621EE4BE4005EB627 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E421EE4BE4005EB627 /* Model.xcdatamodeld */; };
+		CCBB09E821EE4BF8005EB627 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E721EE4BF8005EB627 /* CoreDataStack.swift */; };
+		CCBB09EC21EE4DE5005EB627 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09EB21EE4DE5005EB627 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC0E23D221EF80010062F8D8 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		CCBB09C821EE3E97005EB627 /* slapJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slapJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCBB09CB21EE3E97005EB627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CCBB09CD21EE3E97005EB627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCBB09CD21EE3E97005EB627 /* SlapJackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlapJackViewController.swift; sourceTree = "<group>"; };
 		CCBB09D021EE3E97005EB627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCBB09D221EE3E98005EB627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCBB09D521EE3E98005EB627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCBB09D721EE3E98005EB627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCBB09E021EE3EEB005EB627 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		CCBB09E221EE4970005EB627 /* CardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardController.swift; sourceTree = "<group>"; };
+		CCBB09E521EE4BE4005EB627 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		CCBB09E721EE4BF8005EB627 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		CCBB09EB21EE4DE5005EB627 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,7 @@
 				CCBB09DD21EE3EA1005EB627 /* Models */,
 				CCBB09CB21EE3E97005EB627 /* AppDelegate.swift */,
 				CCBB09D721EE3E98005EB627 /* Info.plist */,
+				CCBB09E721EE4BF8005EB627 /* CoreDataStack.swift */,
 			);
 			path = slapJack;
 			sourceTree = "<group>";
@@ -68,6 +79,9 @@
 		CCBB09DD21EE3EA1005EB627 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CCBB09E421EE4BE4005EB627 /* Model.xcdatamodeld */,
+				CCBB09EB21EE4DE5005EB627 /* Card.swift */,
+				CC0E23D221EF80010062F8D8 /* Deck.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -75,8 +89,9 @@
 		CCBB09DE21EE3EAB005EB627 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CCBB09CD21EE3E97005EB627 /* ViewController.swift */,
+				CCBB09CD21EE3E97005EB627 /* SlapJackViewController.swift */,
 				CCBB09E021EE3EEB005EB627 /* NetworkController.swift */,
+				CCBB09E221EE4970005EB627 /* CardController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -162,9 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCBB09CE21EE3E97005EB627 /* ViewController.swift in Sources */,
+				CCBB09CE21EE3E97005EB627 /* SlapJackViewController.swift in Sources */,
+				CCBB09E321EE4970005EB627 /* CardController.swift in Sources */,
+				CCBB09E621EE4BE4005EB627 /* Model.xcdatamodeld in Sources */,
+				CCBB09E821EE4BF8005EB627 /* CoreDataStack.swift in Sources */,
+				CC0E23D321EF80020062F8D8 /* Deck.swift in Sources */,
 				CCBB09CC21EE3E97005EB627 /* AppDelegate.swift in Sources */,
 				CCBB09E121EE3EEB005EB627 /* NetworkController.swift in Sources */,
+				CCBB09EC21EE4DE5005EB627 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +382,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CCBB09E421EE4BE4005EB627 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CCBB09E521EE4BE4005EB627 /* Model.xcdatamodel */,
+			);
+			currentVersion = CCBB09E521EE4BE4005EB627 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CCBB09C021EE3E97005EB627 /* Project object */;
 }

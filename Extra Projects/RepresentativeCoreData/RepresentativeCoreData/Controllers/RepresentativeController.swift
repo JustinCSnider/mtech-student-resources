@@ -73,7 +73,7 @@ class RepresentativeController {
         Stack.context.delete(rep)
         saveToPersistentStorage()
     }
-    
+
     func saveRep(rep: Representative) {
         
         for representative in representatives {

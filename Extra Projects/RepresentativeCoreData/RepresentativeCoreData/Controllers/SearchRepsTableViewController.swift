@@ -41,6 +41,8 @@ class SearchRepsTableViewController: UITableViewController, UISearchBarDelegate 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            guard let reps = reps else { return }
+            self.representatives = reps
         }
     }
     

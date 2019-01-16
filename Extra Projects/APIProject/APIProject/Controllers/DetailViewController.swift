@@ -85,7 +85,7 @@ class DetailViewController: UIViewController {
         guard let currentItem = currentItem as? NobelWinner else {return}
         navigationItem.title = "Nobel Prize Winners of " + currentItem.year
         
-        nobelWinnerFullNameLabel.text = "Full Name: " + (selectedItem?.firstName ?? "") + " " + (selectedItem?.surName ?? "")
+        nobelWinnerFullNameLabel.text = "Full Name: \(selectedItem?.firstName ?? "") \(selectedItem?.surName ?? "")"
         nobelWinnerYearLabel.text = "Year: " + currentItem.year
         if selectedItem?.motivation == "" {
             nobelWinnerMotivationLabel.isHidden = true
