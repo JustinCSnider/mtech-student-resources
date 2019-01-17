@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SlapJackViewController: UIViewController {
     
@@ -44,7 +45,7 @@ class SlapJackViewController: UIViewController {
         slapJackButton.layer.cornerRadius = 5
         slapJackButton.layer.masksToBounds = true
         
-        _ = CardController.sharedController.deck
+        CardController.sharedController.setDeck()
     }
 
 

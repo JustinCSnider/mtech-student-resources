@@ -24,8 +24,8 @@ class Card: NSManagedObject, Decodable {
         case suit
     }
     
-    required init(from decoder: Decoder) throws {
-        super.init(entity: NSEntityDescription.entity(forEntityName: Card.entityName, in: Stack.context)!, insertInto: Stack.context)
+    required convenience init(from decoder: Decoder) throws {
+        self.init(entity: NSEntityDescription.entity(forEntityName: Card.entityName, in: Stack.context)!, insertInto: Stack.context)
         let valueContainer = try decoder.container(keyedBy: CodingKeys.self)
         self.imageURL = try valueContainer.decode(String.self, forKey: CodingKeys.imageURL)
         self.value = try valueContainer.decode(String.self, forKey: CodingKeys.value)
@@ -37,4 +37,8 @@ class Card: NSManagedObject, Decodable {
         try! self.init(from: decoder)
         self.deck = deck
     }
+}
+
+struct Cards: Decodable {
+    let cards: [Card]
 }
