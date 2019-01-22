@@ -16,8 +16,8 @@ class CardController {
     //========================================
     
     static var sharedController = CardController()
-    
-    var deck: Deck?
+    private var score: Int = 0
+    private var deck: Deck?
     
     //========================================
     //MARK: - Network Methods
@@ -60,12 +60,14 @@ class CardController {
                 let decoder = JSONDecoder()
                 
                 let cards = try decoder.decode(Cards.self, from: data)
-                deck.cards = NSSet(array: cards.cards)
+                var deck = self.deck?.cards?.allObjects as! [Card]
+                
+                deck.append(cards.cards[0])
+                
+                self.deck?.cards = NSSet(array: deck)
             } catch {
                 print(error)
             }
-            self.saveToPersistentStorage()
-            
         }
     }
     
@@ -91,16 +93,33 @@ class CardController {
         
         do {
             if let coreDataDeck = try Stack.context.fetch(deckFetchRequest).first {
-                deck = coreDataDeck
+                self.deck = coreDataDeck
             } else {
                 createNewDeck { (deck) in
                     guard let unwrappedDeck = deck else { return }
                     self.deck = unwrappedDeck
-                    self.saveToPersistentStorage()
+                    self.drawCard()
                 }
             }
         } catch {
             print("Unable to fetch data from the context")
         }
+    }
+    
+    func getDeck() -> Deck {
+        guard let deck = deck else { fatalError() }
+        return deck
+    }
+    
+    func setScore() {
+        if (CardController.sharedController.deck?.cards?.allObjects.last as! Card).value == "JACK" {
+            score += 1
+        } else {
+            score -= 1
+        }
+    }
+    
+    func getScore() -> Int {
+        return score
     }
 }
