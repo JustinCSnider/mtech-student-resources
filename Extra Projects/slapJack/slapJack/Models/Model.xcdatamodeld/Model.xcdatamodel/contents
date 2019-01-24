@@ -9,10 +9,11 @@
     </entity>
     <entity name="Deck" representedClassName=".Deck" syncable="YES">
         <attribute name="entity_id" attributeType="String" syncable="YES"/>
+        <attribute name="remaining" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Card" inverseName="deck" inverseEntity="Card" syncable="YES"/>
     </entity>
     <elements>
         <element name="Card" positionX="-54" positionY="0" width="128" height="120"/>
-        <element name="Deck" positionX="-54" positionY="9" width="128" height="75"/>
+        <element name="Deck" positionX="-54" positionY="9" width="128" height="90"/>
     </elements>
 </model>

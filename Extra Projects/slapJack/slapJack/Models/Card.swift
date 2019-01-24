@@ -32,13 +32,8 @@ class Card: NSManagedObject, Decodable {
         self.suit = try valueContainer.decode(String.self, forKey: CodingKeys.suit)
         self.wasSlapped = false
     }
-    
-    convenience init(from decoder: Decoder, and deck: Deck) {
-        try! self.init(from: decoder)
-        self.deck = deck
-    }
 }
 
-struct Cards: Decodable {
+struct Results: Decodable {
     let cards: [Card]
 }
