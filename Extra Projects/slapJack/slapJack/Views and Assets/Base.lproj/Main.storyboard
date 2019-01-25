@@ -28,12 +28,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilp-XG-W0c">
-                                <rect key="frame" x="16" y="20" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkA-7l-odZ">
                                 <rect key="frame" x="112.5" y="318.5" width="150" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,10 +119,37 @@
                                     <constraint firstAttribute="trailing" secondItem="fsb-Oo-XY0" secondAttribute="trailing" constant="87.5" id="Gq5-Cs-ru7"/>
                                 </constraints>
                             </stackView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVi-Oj-Qap">
+                                <rect key="frame" x="16" y="20" width="50" height="74"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0hW-Ri-pK2">
+                                        <rect key="frame" x="0.0" y="2" width="50" height="70.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cards:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilp-XG-W0c">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ige-F3-1Zz">
+                                                <rect key="frame" x="0.0" y="22.5" width="50" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="IWM-j8-lOa"/>
+                                    <constraint firstAttribute="width" constant="50" id="sZf-EL-ijs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ilp-XG-W0c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8ae-0Y-zPN"/>
                             <constraint firstItem="UXj-Jw-9Ex" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="DGY-0b-e1s"/>
                             <constraint firstItem="eIR-8Q-F1n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GZh-fR-epf"/>
                             <constraint firstItem="4Yo-N5-bLy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XyE-X0-ZUx"/>
@@ -136,15 +157,16 @@
                             <constraint firstItem="UXj-Jw-9Ex" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="29" id="eLb-TW-hU1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UXj-Jw-9Ex" secondAttribute="bottom" constant="50" id="gLA-Gn-VPm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6vT-L0-HlC" secondAttribute="trailing" id="gbd-LD-HAf"/>
+                            <constraint firstItem="sVi-Oj-Qap" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hND-Es-9fa"/>
                             <constraint firstItem="4Yo-N5-bLy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lpY-D9-pWB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6vT-L0-HlC" secondAttribute="bottom" constant="60" id="lu2-ek-vVu"/>
                             <constraint firstItem="6vT-L0-HlC" firstAttribute="top" secondItem="UXj-Jw-9Ex" secondAttribute="top" id="opr-j5-zIb"/>
+                            <constraint firstItem="sVi-Oj-Qap" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oww-Sy-MxR"/>
                             <constraint firstItem="MkA-7l-odZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="p9H-nJ-Mf9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UXj-Jw-9Ex" secondAttribute="trailing" constant="50" id="sd1-Xc-JC8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="6vT-L0-HlC" secondAttribute="leading" id="u0c-7P-Eh5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eIR-8Q-F1n" secondAttribute="trailing" constant="16" id="wu5-1O-lEB"/>
                             <constraint firstItem="MkA-7l-odZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="112.5" id="xF0-q9-gse"/>
-                            <constraint firstItem="ilp-XG-W0c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="zjr-a0-ttF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -154,7 +176,9 @@
                         <outlet property="doneButton" destination="fsb-Oo-XY0" id="QtW-cR-eOz"/>
                         <outlet property="doneStackView" destination="6vT-L0-HlC" id="0S6-9D-Yns"/>
                         <outlet property="missedJacksLabel" destination="QkF-Cm-R3h" id="O9T-tS-AJz"/>
-                        <outlet property="numberOfCardsLabel" destination="ilp-XG-W0c" id="OAB-A0-zSY"/>
+                        <outlet property="numberOfCardsLabel" destination="Ige-F3-1Zz" id="fQ7-KO-RaR"/>
+                        <outlet property="numberOfCardsTitleLabel" destination="ilp-XG-W0c" id="6HW-0E-fo7"/>
+                        <outlet property="numberOfCardsView" destination="sVi-Oj-Qap" id="FdV-Mb-kkA"/>
                         <outlet property="pauseButton" destination="eIR-8Q-F1n" id="w90-rj-0Pf"/>
                         <outlet property="scoreLabel" destination="4Yo-N5-bLy" id="Q1T-8c-nWz"/>
                         <outlet property="slapJackButton" destination="MkA-7l-odZ" id="gYD-X9-nPW"/>

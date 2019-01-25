@@ -112,7 +112,6 @@ class CardController {
         do {
             if let coreDataDeck = try Stack.context.fetch(deckFetchRequest).last {
                 self.deck = coreDataDeck
-                Stack.context.delete(coreDataDeck)
             } else {
                 createNewDeck { (deck) in
                     guard let unwrappedDeck = deck else { return }
@@ -133,10 +132,12 @@ class CardController {
     //Score
     func setScore() {
         let count = orderedCards.count
-        if self.orderedCards[count - 1].value == "JACK" {
-            score += 1
-        } else {
-            score -= 1
+        if self.orderedCards[count - 1].wasSlapped == false {
+            if self.orderedCards[count - 1].value == "JACK" {
+                score += 1
+            } else {
+                score -= 1
+            }
         }
         orderedCards[count - 1].wasSlapped = true
         
