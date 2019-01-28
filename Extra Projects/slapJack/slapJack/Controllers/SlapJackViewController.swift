@@ -34,6 +34,8 @@ class SlapJackViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var doneStackView: UIStackView!
     @IBOutlet weak var numberOfCardsView: UIView!
+    @IBOutlet weak var pauseView: UIView!
+    @IBOutlet weak var largePauseButton: UIButton!
     
     //========================================
     //MARK: - IBActions
@@ -73,20 +75,22 @@ class SlapJackViewController: UIViewController {
     }
     
     @IBAction func pauseButtonTapped(_ sender: UIButton) {
-        guard let play = UIImage(named: "play"),
-            let pause = UIImage(named: "pause"),
-            let playFilled = UIImage(named: "playFilled"),
+        guard let playFilled = UIImage(named: "largePlayFilled"),
             let pauseFilled = UIImage(named: "pauseFilled") else { return }
         if self.resumeTapped == false {
             timer.invalidate()
             self.resumeTapped = true
-            self.pauseButton.setImage(play, for: .normal)
-            self.pauseButton.setImage(playFilled, for: .highlighted)
+            self.largePauseButton.setImage(playFilled, for: .highlighted)
+            self.pauseButton.alpha = 0.0
+            self.pauseView.alpha = 0.4
+            self.largePauseButton.alpha = 1.0
         } else {
             runTimer()
             self.resumeTapped = false
-            self.pauseButton.setImage(pause, for: .normal)
             self.pauseButton.setImage(pauseFilled, for: .highlighted)
+            self.pauseButton.alpha = 1.0
+            self.pauseView.alpha = 0.0
+            self.largePauseButton.alpha = 0.0
         }
     }
     
@@ -130,6 +134,9 @@ class SlapJackViewController: UIViewController {
         numberOfCardsView.layer.cornerRadius = 5
         numberOfCardsView.layer.borderWidth = 2.0
         numberOfCardsView.layer.borderColor = numberOfCardsView.tintColor.cgColor
+        
+        print(largePauseButton.contentMode.rawValue)
+        print(cardImageView.contentMode.rawValue)
 
         //Logic for setting up view and animations
         CardController.sharedController.setDeck()
@@ -147,7 +154,9 @@ class SlapJackViewController: UIViewController {
             scoreLabel.text = "Score: \(cardController.getScore())"
             numberOfCardsLabel.text = "\(deck.remaining)"
             showCardImage(url: imageURL)
-            self.pauseButton.imageView?.image = UIImage(named: "play")
+            self.pauseButton.setImage(UIImage(named: "pauseFilled"), for: .highlighted)
+            self.pauseView.alpha = 0.4
+            self.largePauseButton.alpha = 1.0
             
             self.pauseButton.alpha = 1.0
             self.slapJackButton.alpha = 0.0
