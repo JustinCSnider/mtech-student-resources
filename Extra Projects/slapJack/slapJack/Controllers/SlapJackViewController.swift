@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Network
+//import Network
 import CoreData
 
 class SlapJackViewController: UIViewController {
@@ -122,15 +122,15 @@ class SlapJackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        monitor.pathUpdateHandler = { (path) in
-            if path.status == .satisfied {
-                print("We're connected!")
-            } else {
-                print("No connection.")
-            }
-            
-            print(path.isExpensive)
-        }
+//        monitor.pathUpdateHandler = { (path) in
+//            if path.status == .satisfied {
+//                print("We're connected!")
+//            } else {
+//                print("No connection.")
+//            }
+//
+//            print(path.isExpensive)
+//        }
         
         CardController.sharedController.setDeck()
         
