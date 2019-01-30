@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Network
 import CoreData
 
 class SlapJackViewController: UIViewController {
@@ -17,6 +18,7 @@ class SlapJackViewController: UIViewController {
     
     private var timer = Timer()
     private var resumeTapped = false
+    private let monitor = NWPathMonitor()
     
     //========================================
     //MARK: - IBOutlets
@@ -120,60 +122,19 @@ class SlapJackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        monitor.pathUpdateHandler = { (path) in
+            if path.status == .satisfied {
+                print("We're connected!")
+            } else {
+                print("No connection.")
+            }
+            
+            print(path.isExpensive)
+        }
         
-        //Slap Jack Button Setup
-        slapJackButton.layer.cornerRadius = 5
-        slapJackButton.layer.masksToBounds = true
-        
-        //Done Button Setup
-        doneButton.layer.cornerRadius = 5
-        doneButton.layer.masksToBounds = true
-        
-        //Number of cards Setup
-        numberOfCardsView.layer.cornerRadius = 5
-        numberOfCardsView.layer.borderWidth = 2.0
-        numberOfCardsView.layer.borderColor = numberOfCardsView.tintColor.cgColor
-        
-        print(largePauseButton.contentMode.rawValue)
-        print(cardImageView.contentMode.rawValue)
-
-        //Logic for setting up view and animations
         CardController.sharedController.setDeck()
         
-        guard let deck = CardController.sharedController.getDeck() else { return }
-        
-        let cardController = CardController.sharedController
-        
-        cardController.orderedCards = deck.cards?.allObjects as! [Card]
-        
-        if deck.remaining > 0, let imageURLString = cardController.orderedCards.last?.imageURL, let imageURL = URL(string: imageURLString) {
-            //Setting up view if the user exited the game while it was still running
-            resumeTapped = true
-            
-            scoreLabel.text = "Score: \(cardController.getScore())"
-            numberOfCardsLabel.text = "\(deck.remaining)"
-            showCardImage(url: imageURL)
-            self.pauseButton.setImage(UIImage(named: "pauseFilled"), for: .highlighted)
-            self.pauseView.alpha = 0.4
-            self.largePauseButton.alpha = 1.0
-            
-            self.pauseButton.alpha = 1.0
-            self.slapJackButton.alpha = 0.0
-            self.cardImageView.alpha = 1.0
-            self.numberOfCardsView.alpha = 1.0
-            self.numberOfCardsTitleLabel.isHidden = true
-            self.scoreLabel.alpha = 1.0
-        } else if cardController.orderedCards != [] {
-            //Setting up view if the user didn't press the done button after they were finished with their game
-            successfulSlapsLabel.text = "\(cardController.getSuccessfullySlappedCards())"
-            badSlapsLabel.text = "\(cardController.getBadSlappedCards())"
-            missedJacksLabel.text = "\(cardController.getMissedJacks())"
-            
-            self.doneButton.isEnabled = true
-            self.slapJackButton.alpha = 0.0
-            self.doneStackView.alpha = 1.0
-        }
+        updateViewWhenLoaded()
     }
     
     //========================================
@@ -188,7 +149,7 @@ class SlapJackViewController: UIViewController {
     }
 
     //========================================
-    //MARK: - Helper Methods
+    //MARK: - Card Methods
     //========================================
     
     @objc private func displayNewCard() {
@@ -245,6 +206,47 @@ class SlapJackViewController: UIViewController {
                 self.cardImageView.image = image
             }
         }.resume()
+    }
+    
+    //========================================
+    //MARK: - Helper Methods
+    //========================================
+    
+    private func updateViewWhenLoaded() {
+        
+        guard let deck = CardController.sharedController.getDeck() else { return }
+        
+        let cardController = CardController.sharedController
+        
+        cardController.orderedCards = deck.cards?.allObjects as! [Card]
+        
+        if deck.remaining > 0, let imageURLString = cardController.orderedCards.last?.imageURL, let imageURL = URL(string: imageURLString) {
+            //Setting up view if the user exited the game while it was still running
+            resumeTapped = true
+            
+            scoreLabel.text = "Score: \(cardController.getScore())"
+            numberOfCardsLabel.text = "\(deck.remaining)"
+            showCardImage(url: imageURL)
+            self.pauseButton.setImage(UIImage(named: "pauseFilled"), for: .highlighted)
+            self.pauseView.alpha = 0.4
+            self.largePauseButton.alpha = 1.0
+            
+            self.pauseButton.alpha = 1.0
+            self.slapJackButton.alpha = 0.0
+            self.cardImageView.alpha = 1.0
+            self.numberOfCardsView.alpha = 1.0
+            self.numberOfCardsTitleLabel.isHidden = true
+            self.scoreLabel.alpha = 1.0
+        } else if cardController.orderedCards != [] {
+            //Setting up view if the user didn't press the done button after they were finished with their game
+            successfulSlapsLabel.text = "\(cardController.getSuccessfullySlappedCards())"
+            badSlapsLabel.text = "\(cardController.getBadSlappedCards())"
+            missedJacksLabel.text = "\(cardController.getMissedJacks())"
+            
+            self.doneButton.isEnabled = true
+            self.slapJackButton.alpha = 0.0
+            self.doneStackView.alpha = 1.0
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC0E23D321EF80020062F8D8 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E23D221EF80010062F8D8 /* Deck.swift */; };
+		CC310CA02200ACC8003FFE58 /* SystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC310C9F2200ACC8003FFE58 /* SystemButton.swift */; };
 		CCBB09CC21EE3E97005EB627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09CB21EE3E97005EB627 /* AppDelegate.swift */; };
 		CCBB09CE21EE3E97005EB627 /* SlapJackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09CD21EE3E97005EB627 /* SlapJackViewController.swift */; };
 		CCBB09D121EE3E97005EB627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCBB09CF21EE3E97005EB627 /* Main.storyboard */; };
@@ -18,10 +19,12 @@
 		CCBB09E621EE4BE4005EB627 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E421EE4BE4005EB627 /* Model.xcdatamodeld */; };
 		CCBB09E821EE4BF8005EB627 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09E721EE4BF8005EB627 /* CoreDataStack.swift */; };
 		CCBB09EC21EE4DE5005EB627 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB09EB21EE4DE5005EB627 /* Card.swift */; };
+		CCE2E0A12200B0EC000EF0F5 /* RemainingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE2E0A02200B0EC000EF0F5 /* RemainingCardsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CC0E23D221EF80010062F8D8 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		CC310C9F2200ACC8003FFE58 /* SystemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemButton.swift; sourceTree = "<group>"; };
 		CCBB09C821EE3E97005EB627 /* slapJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slapJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCBB09CB21EE3E97005EB627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCBB09CD21EE3E97005EB627 /* SlapJackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlapJackViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		CCBB09E521EE4BE4005EB627 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CCBB09E721EE4BF8005EB627 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		CCBB09EB21EE4DE5005EB627 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CCE2E0A02200B0EC000EF0F5 /* RemainingCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingCardsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC310C9E2200AC8F003FFE58 /* UIDesign */ = {
+			isa = PBXGroup;
+			children = (
+				CC310C9F2200ACC8003FFE58 /* SystemButton.swift */,
+				CCE2E0A02200B0EC000EF0F5 /* RemainingCardsView.swift */,
+			);
+			path = UIDesign;
+			sourceTree = "<group>";
+		};
 		CCBB09BF21EE3E97005EB627 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +115,7 @@
 				CCBB09CF21EE3E97005EB627 /* Main.storyboard */,
 				CCBB09D421EE3E98005EB627 /* LaunchScreen.storyboard */,
 				CCBB09D221EE3E98005EB627 /* Assets.xcassets */,
+				CC310C9E2200AC8F003FFE58 /* UIDesign */,
 			);
 			path = "Views and Assets";
 			sourceTree = "<group>";
@@ -178,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCBB09CE21EE3E97005EB627 /* SlapJackViewController.swift in Sources */,
+				CCE2E0A12200B0EC000EF0F5 /* RemainingCardsView.swift in Sources */,
+				CC310CA02200ACC8003FFE58 /* SystemButton.swift in Sources */,
 				CCBB09E321EE4970005EB627 /* CardController.swift in Sources */,
 				CCBB09E621EE4BE4005EB627 /* Model.xcdatamodeld in Sources */,
 				CCBB09E821EE4BF8005EB627 /* CoreDataStack.swift in Sources */,
@@ -339,7 +355,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.slapJack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -356,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.slapJack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
